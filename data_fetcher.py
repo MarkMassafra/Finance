@@ -6,11 +6,7 @@ def print_stock_data(stock_symbol):
     for the given stock symbol from the previous day.
     """
     stock = yf.Ticker(stock_symbol)
-
-    # Fetching historical data
     historical_data = stock.history(period='1d')
-
-    # Fetching the 200-day moving average from stock info
     stock_info = stock.info
     two_hundred_MDA = round(stock_info.get('twoHundredDayAverage', 0), 2)  # Using .get() for safe access
 
@@ -23,8 +19,10 @@ def print_stock_data(stock_symbol):
 
         print(f"Date: {date}\nOpen Price: {open_price}\nClose Price: {close_price}\n"
               f"Intraday High: {intraday_high}\nIntraday Low: {intraday_low}\n200-Day Moving Average: {two_hundred_MDA}")
+        return open_price, two_hundred_MDA
     else:
         print(f"No recent trading data available for {stock_symbol}.")
+        return None,None
 
 def print_stock_history_columns(stock_symbol):
     """
@@ -36,5 +34,15 @@ def print_stock_history_columns(stock_symbol):
     print(historical_data.columns)
 
 # Example usage
-print_stock_history_columns("MSFT")
+
+def invest_in_stock(stock_symbol):
+    open_price, two_hundred_MDA = print_stock_data(stock_symbol)
+    if open_price is not None and two_hundred_MDA is not None:
+        if open_price < two_hundred_MDA:
+            print('Buy buy Buy')
+        else:
+            print('Hold')
+
+invest_in_stock("MSFT")
+
 
