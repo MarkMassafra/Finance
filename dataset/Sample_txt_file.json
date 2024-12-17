@@ -13,8 +13,8 @@
 				"fileName": "Create_public_sales.txt",
 				"container": "udemy-course"
 			},
-			"columnDelimiter": "",
-			"rowDelimiter": "",
+			"columnDelimiter": ",",
+			"rowDelimiter": "\n",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
