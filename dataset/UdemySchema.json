@@ -1,5 +1,5 @@
 {
-	"name": "AzureSqlTable1",
+	"name": "UdemySchema",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "UdemySchema",
