@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Create_public_sales.txt",
+				"fileName": "Fact_Sales_1.csv",
 				"container": "udemy-course"
 			},
 			"columnDelimiter": ",",
