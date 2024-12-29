@@ -1,0 +1,17 @@
+{
+	"name": "DB Modeling Practice",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "mmass5.database.windows.net",
+			"database": "DB Modeling Practice",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "MarkMassafra",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEIzMUM3RDRELTVGNkUtNEJBOS1CMDJCLTRFMkE4RkRBRjUzNV81NmJhMzk4OS04YTg1LTQ0MjQtYmI2OC0yY2MxNzg1MzJjMGMiDQp9"
+		}
+	}
+}
