@@ -55,7 +55,7 @@
 				]
 			},
 			{
-				"name": "Stored procedure1",
+				"name": "Rename columns",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -75,6 +75,33 @@
 				"userProperties": [],
 				"typeProperties": {
 					"storedProcedureName": "[dbo].[SetupStagingTableForYoutube]"
+				},
+				"linkedServiceName": {
+					"referenceName": "DB Modeling Practice",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Add Primary Key",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Rename columns",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[SetLocationSKAsPrimaryKey]"
 				},
 				"linkedServiceName": {
 					"referenceName": "DB Modeling Practice",
