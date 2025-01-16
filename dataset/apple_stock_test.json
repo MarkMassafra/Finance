@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "AAPL_history_2025-01-14.csv",
+				"fileName": "AAPL_history.csv",
 				"container": "yfinance"
 			},
 			"columnDelimiter": ",",

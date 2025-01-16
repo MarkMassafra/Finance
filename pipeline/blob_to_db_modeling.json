@@ -26,30 +26,11 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"sink": {
-						"type": "AzureSqlSink",
-						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
 						"referenceName": "db_model_csv",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "DB_Modeling",
 						"type": "DatasetReference"
 					}
 				]
@@ -75,10 +56,6 @@
 				"userProperties": [],
 				"typeProperties": {
 					"storedProcedureName": "[dbo].[SetupStagingTableForYoutube]"
-				},
-				"linkedServiceName": {
-					"referenceName": "DB Modeling Practice",
-					"type": "LinkedServiceReference"
 				}
 			},
 			{
@@ -102,10 +79,6 @@
 				"userProperties": [],
 				"typeProperties": {
 					"storedProcedureName": "[dbo].[SetLocationSKAsPrimaryKey]"
-				},
-				"linkedServiceName": {
-					"referenceName": "DB Modeling Practice",
-					"type": "LinkedServiceReference"
 				}
 			}
 		],

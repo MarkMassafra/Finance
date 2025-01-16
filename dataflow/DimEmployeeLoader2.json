@@ -5,44 +5,24 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "EmployeeFiles",
-						"type": "DatasetReference"
-					},
 					"name": "Employees1",
 					"description": " Source employees file, changes every day"
 				},
 				{
-					"dataset": {
-						"referenceName": "DimEmp",
-						"type": "DatasetReference"
-					},
 					"name": "DimEmployees",
 					"description": "Current rows in DimEmployees DW table"
 				}
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "DimEmp",
-						"type": "DatasetReference"
-					},
 					"name": "sinkNew",
 					"description": " "
 				},
 				{
-					"dataset": {
-						"referenceName": "DimEmp",
-						"type": "DatasetReference"
-					},
 					"name": "sinkUpdates",
 					"description": " "
 				},
 				{
-					"dataset": {
-						"referenceName": "DimEmp",
-						"type": "DatasetReference"
-					},
 					"name": "sinkInactive",
 					"description": " Age out old rows"
 				}
@@ -103,7 +83,6 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false,",
 				"     purgeFiles: true,",
 				"     wildcardPaths:['SampleData/Emps/today/*.csv']) ~> Employees1",
 				"source(output(",
@@ -120,9 +99,7 @@
 				"          processtime as timestamp",
 				"     ),",
 				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> DimEmployees",
+				"     validateSchema: false) ~> DimEmployees",
 				"DimEmployees derive(EmpID = toInteger(EmpID)) ~> TypeConversions",
 				"NullFilter derive(EmpID = toInteger(EmpID),",
 				"          StartDate = toDate(StartDate,'MM/dd/yyyy'),",
@@ -183,80 +160,22 @@
 				"     skipDuplicateMapOutputs: false) ~> NameNorm2",
 				"SetAttrsForNew sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     input(",
-				"          EmpID as integer,",
-				"          surrogatekey as string,",
-				"          Region as string,",
-				"          Status as string,",
-				"          EmpFunction as string,",
-				"          Level as string,",
-				"          Role as string,",
-				"          StartDate as date,",
-				"          EndDate as date,",
-				"          iscurrent as integer,",
-				"          processtime as timestamp",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
-				"     batchSize: 50,",
-				"     errorHandlingOption: 'stopOnFirstError',",
-				"     partitionBy('roundRobin', 4)) ~> sinkNew",
+				"     partitionBy('roundRobin', 4),",
+				"     format: 'table') ~> sinkNew",
 				"SetAttrsUpdate sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     input(",
-				"          EmpID as integer,",
-				"          surrogatekey as string,",
-				"          Region as string,",
-				"          Status as string,",
-				"          EmpFunction as string,",
-				"          Level as string,",
-				"          Role as string,",
-				"          StartDate as date,",
-				"          EndDate as date,",
-				"          iscurrent as integer,",
-				"          processtime as timestamp",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
-				"     batchSize: 50,",
-				"     errorHandlingOption: 'stopOnFirstError',",
-				"     partitionBy('roundRobin', 4)) ~> sinkUpdates",
+				"     partitionBy('roundRobin', 4),",
+				"     format: 'table') ~> sinkUpdates",
 				"AlterRow1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     input(",
-				"          EmpID as integer,",
-				"          surrogatekey as string,",
-				"          Region as string,",
-				"          Status as string,",
-				"          EmpFunction as string,",
-				"          Level as string,",
-				"          Role as string,",
-				"          StartDate as date,",
-				"          EndDate as date,",
-				"          iscurrent as integer,",
-				"          processtime as timestamp",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:false,",
-				"     updateable:true,",
-				"     upsertable:false,",
-				"     keys:['EmpID'],",
-				"     format: 'table',",
-				"     batchSize: 50,",
-				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          EmpID,",
 				"          EndDate,",
 				"          iscurrent,",
 				"          processtime",
 				"     ),",
-				"     partitionBy('roundRobin', 4)) ~> sinkInactive"
+				"     partitionBy('roundRobin', 4),",
+				"     format: 'table') ~> sinkInactive"
 			]
 		}
 	}
