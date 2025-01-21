@@ -10,7 +10,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "apple_test"
+			"table": "src_yfinance_data"
 		}
 	}
 }
