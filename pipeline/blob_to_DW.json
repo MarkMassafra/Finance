@@ -63,6 +63,18 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
+					},
+					{
+						"activity": "Imformation Dim Load",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Location Dim Load",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
 				"policy": {
@@ -73,6 +85,9 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[etl_load_industry_dim]"
+				},
 				"linkedServiceName": {
 					"referenceName": "AzureSqlDatabase1",
 					"type": "LinkedServiceReference"
