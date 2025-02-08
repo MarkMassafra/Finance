@@ -1,6 +1,11 @@
 {
 	"name": "AzureSqlDatabase1",
 	"properties": {
+		"parameters": {
+			"TableName": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
