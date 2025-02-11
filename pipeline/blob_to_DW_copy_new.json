@@ -225,8 +225,8 @@
 					"storedProcedureName": "[dbo].[sp_check_duplicates_yfinance]",
 					"storedProcedureParameters": {
 						"DuplicateCount": {
-							"value": null,
-							"type": "Int16"
+							"value": "",
+							"type": "Int32"
 						}
 					}
 				},
