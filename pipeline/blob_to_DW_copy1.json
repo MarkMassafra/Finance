@@ -50,7 +50,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "Source_Table",
 						"type": "DatasetReference"
 					}
 				]
@@ -229,7 +229,7 @@
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "Source_Table",
 						"type": "DatasetReference"
 					}
 				}
@@ -270,7 +270,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "AzureSqlTable1",
+									"referenceName": "Source_Table",
 									"type": "DatasetReference"
 								}
 							]
