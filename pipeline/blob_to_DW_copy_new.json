@@ -114,7 +114,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[etl_load_info_dim]"
+					"storedProcedureName": "[dbo].[dbo.etl_load_info_dim]"
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureSqlDatabase1",
