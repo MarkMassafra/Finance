@@ -5,26 +5,12 @@
 			"referenceName": "AzureSqlDatabase1",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"destination_schema": {
-				"type": "string"
-			},
-			"destination_table": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": {
-				"value": "@dataset().destination_schema",
-				"type": "Expression"
-			},
-			"table": {
-				"value": "@dataset().destination_table",
-				"type": "Expression"
-			}
+			"schema": "dbo",
+			"table": "src_yfinance_data"
 		}
 	}
 }
