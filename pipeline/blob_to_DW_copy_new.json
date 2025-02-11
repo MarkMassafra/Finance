@@ -222,7 +222,13 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[sp_check_duplicates_yfinance]"
+					"storedProcedureName": "[dbo].[sp_check_duplicates_yfinance]",
+					"storedProcedureParameters": {
+						"DuplicateCount": {
+							"value": "Output",
+							"type": "Int16"
+						}
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureSqlDatabase1",
@@ -243,7 +249,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@greater(activity('sp_check_duplicates_yfinance').output.OutputParameters['DuplicateCount'], 0)\n",
+						"value": "@greater(activity('Checks Duplicates in Source').output.OutputParameters['DuplicateCount'], 0)\n",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
