@@ -203,6 +203,33 @@
 				}
 			},
 			{
+				"name": "Checks Duplicates in Source",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Copy source data into DW",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[sp_check_duplicates_yfinance]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
 				"name": "If Condition1",
 				"type": "IfCondition",
 				"dependsOn": [
@@ -216,7 +243,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@greater(activity('StoredProcedureActivity').output.DuplicateFlag, 0)",
+						"value": "@greater(activity('sp_check_duplicates_yfinance').output.OutputParameters['DuplicateCount'], 0)\n",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
@@ -289,33 +316,6 @@
 							}
 						}
 					]
-				}
-			},
-			{
-				"name": "Checks Duplicates in Source",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [
-					{
-						"activity": "Copy source data into DW",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[dbo].[sp_check_duplicates_yfinance]"
-				},
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase1",
-					"type": "LinkedServiceReference"
 				}
 			}
 		],
