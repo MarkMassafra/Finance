@@ -249,7 +249,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@greater(activity('Checks Duplicates in Source').output.OutputParameters['DuplicateCount'], 0)\n",
+						"value": "@greater(activity('Checks Duplicates in Source').output.['DuplicateCount'], 0)\n",
 						"type": "Expression"
 					},
 					"ifFalseActivities": [
