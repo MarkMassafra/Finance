@@ -2,15 +2,8 @@
 	"name": "trigger1",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Started",
-		"pipelines": [
-			{
-				"pipelineReference": {
-					"referenceName": "blob_to_sql_db",
-					"type": "PipelineReference"
-				}
-			}
-		],
+		"runtimeState": "Stopped",
+		"pipelines": [],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
 			"blobPathBeginsWith": "/yfinance/blobs/test",
