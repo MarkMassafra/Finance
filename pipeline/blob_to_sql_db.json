@@ -65,7 +65,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "triggertest",
 						"type": "DatasetReference"
 					}
 				]
