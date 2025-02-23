@@ -19,10 +19,6 @@
 			"type": "string",
 			"defaultValue": "Finance Prod"
 		},
-		"blob_trigger_properties_blob_to_sql_db_parameters_file_name": {
-			"type": "string",
-			"defaultValue": "@triggerBody().fileName"
-		},
 		"blob_trigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/2b99ca7d-46e7-4926-9c1e-6448609239eb/resourceGroups/yfinanceproject_group/providers/Microsoft.Storage/storageAccounts/yfinanceprojectgrouabd4"
@@ -177,20 +173,12 @@
 					"referenceName": "AzureBlobStorage1",
 					"type": "LinkedServiceReference"
 				},
-				"parameters": {
-					"file_name_ds": {
-						"type": "string"
-					}
-				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": {
-							"value": "@dataset().file_name_ds",
-							"type": "Expression"
-						},
+						"fileName": "yfinance-test.csv",
 						"container": "triggertest"
 					},
 					"columnDelimiter": ",",
@@ -332,12 +320,7 @@
 							{
 								"referenceName": "DelimitedText1",
 								"type": "DatasetReference",
-								"parameters": {
-									"file_name_ds": {
-										"value": "@pipeline().parameters.file_name",
-										"type": "Expression"
-									}
-								}
+								"parameters": {}
 							}
 						],
 						"outputs": [
@@ -351,11 +334,6 @@
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
-				},
-				"parameters": {
-					"file_name": {
-						"type": "string"
-					}
 				},
 				"annotations": [],
 				"lastPublishTime": "2024-12-09T02:41:33Z"
@@ -378,9 +356,7 @@
 							"referenceName": "blob_to_sql_db",
 							"type": "PipelineReference"
 						},
-						"parameters": {
-							"file_name": "[parameters('blob_trigger_properties_blob_to_sql_db_parameters_file_name')]"
-						}
+						"parameters": {}
 					}
 				],
 				"type": "BlobEventsTrigger",
