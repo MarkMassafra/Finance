@@ -5,13 +5,21 @@
 			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"file_name_ds": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "yfinance_top_12_data.csv",
-				"container": "yfinance"
+				"fileName": {
+					"value": "@dataset().file_name_ds",
+					"type": "Expression"
+				},
+				"container": "triggertest"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
