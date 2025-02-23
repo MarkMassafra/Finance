@@ -95,7 +95,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "src_yfinance_data_test"
+			"table": "src_yfinance_data"
 		}
 	}
 }
