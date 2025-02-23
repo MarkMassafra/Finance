@@ -545,7 +545,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "AzureSqlTable1",
+								"referenceName": "triggertest",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -565,7 +565,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DelimitedText2')]",
-				"[concat(variables('factoryId'), '/datasets/AzureSqlTable1')]"
+				"[concat(variables('factoryId'), '/datasets/triggertest')]"
 			]
 		},
 		{
