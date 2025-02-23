@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "test.csv",
-				"container": "yfinance"
+				"fileName": "yfinance-test.csv",
+				"container": "triggertest"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
