@@ -8,6 +8,9 @@
 				"pipelineReference": {
 					"referenceName": "blob_to_sql_db",
 					"type": "PipelineReference"
+				},
+				"parameters": {
+					"file_name": "@triggerBody().fileName"
 				}
 			}
 		],
