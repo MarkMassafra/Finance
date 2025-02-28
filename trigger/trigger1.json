@@ -16,7 +16,7 @@
 		],
 		"type": "BlobEventsTrigger",
 		"typeProperties": {
-			"blobPathBeginsWith": "/triggertest/blobs/",
+			"blobPathBeginsWith": "/yfinance/blobs/yfinance_top_12_data",
 			"blobPathEndsWith": ".csv",
 			"ignoreEmptyBlobs": true,
 			"scope": "/subscriptions/2b99ca7d-46e7-4926-9c1e-6448609239eb/resourceGroups/yfinanceproject_group/providers/Microsoft.Storage/storageAccounts/yfinanceprojectgrouabd4",
