@@ -107,7 +107,7 @@
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [
 							{
-								"activity": "blob to source table",
+								"activity": "Wait1",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -122,11 +122,27 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"storedProcedureName": "[[dbo].[sp_deduplicate_and_stage_yfinance_data]"
+							"storedProcedureName": "[[dbo].[sp_deduplicate_and_stage_yfinance_data_test]"
 						},
 						"linkedServiceName": {
 							"referenceName": "AzureSqlDatabase1",
 							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Wait1",
+						"type": "Wait",
+						"dependsOn": [
+							{
+								"activity": "blob to source table",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"waitTimeInSeconds": 15
 						}
 					}
 				],
