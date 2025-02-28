@@ -336,7 +336,7 @@
 						]
 					},
 					{
-						"name": "Stored procedure1",
+						"name": "Load Staging",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [
 							{
