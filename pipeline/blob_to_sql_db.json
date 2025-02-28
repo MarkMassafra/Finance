@@ -65,7 +65,7 @@
 				]
 			},
 			{
-				"name": "Stored procedure1",
+				"name": "Laod Information Dim",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -82,10 +82,17 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[dbo.etl_load_info_dim]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
-				"name": "Stored procedure2",
+				"name": "Load Location Dim",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -102,10 +109,17 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[etl_load_location_dim]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
-				"name": "Stored procedure3",
+				"name": "Load Sector Dim",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -122,26 +136,33 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[etl_load_sector_dim]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
-				"name": "Stored procedure4",
+				"name": "Load Industry Dim",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Stored procedure1",
+						"activity": "Laod Information Dim",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					},
 					{
-						"activity": "Stored procedure2",
+						"activity": "Load Location Dim",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					},
 					{
-						"activity": "Stored procedure3",
+						"activity": "Load Sector Dim",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -154,14 +175,21 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[etl_load_industry_dim]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				}
 			},
 			{
-				"name": "Stored procedure5",
+				"name": "Load Fact",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Stored procedure4",
+						"activity": "Load Industry Dim",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -174,7 +202,14 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[etl_load_company_fact]"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"parameters": {
