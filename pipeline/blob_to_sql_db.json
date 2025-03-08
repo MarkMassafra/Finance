@@ -110,7 +110,7 @@
 				}
 			},
 			{
-				"name": "Lookup1",
+				"name": "Check Row Counts",
 				"type": "Lookup",
 				"dependsOn": [
 					{
@@ -146,7 +146,7 @@
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Lookup1",
+						"activity": "Check Row Counts",
 						"dependencyConditions": [
 							"Succeeded"
 						]
