@@ -67,7 +67,7 @@
 				]
 			},
 			{
-				"name": "Stored procedure1",
+				"name": "Load src table",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -114,7 +114,7 @@
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "Stored procedure1",
+						"activity": "Load src table",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -160,7 +160,7 @@
 					},
 					"ifFalseActivities": [
 						{
-							"name": "Stored procedure4",
+							"name": "Capture Row Count Difference",
 							"type": "SqlServerStoredProcedure",
 							"dependsOn": [],
 							"policy": {
@@ -182,7 +182,7 @@
 					],
 					"ifTrueActivities": [
 						{
-							"name": "Stored procedure3",
+							"name": "Load stg table",
 							"type": "SqlServerStoredProcedure",
 							"dependsOn": [],
 							"policy": {
