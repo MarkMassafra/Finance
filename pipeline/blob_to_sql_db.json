@@ -109,11 +109,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"file_name": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"lastPublishTime": "2024-12-09T02:41:33Z"
 	},
