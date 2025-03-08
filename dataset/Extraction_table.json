@@ -1,0 +1,106 @@
+{
+	"name": "Extraction_table",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "YfinanceOid",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Date",
+				"type": "datetimeoffset",
+				"scale": 3
+			},
+			{
+				"name": "Open",
+				"type": "decimal",
+				"precision": 25,
+				"scale": 20
+			},
+			{
+				"name": "Close",
+				"type": "decimal",
+				"precision": 25,
+				"scale": 20
+			},
+			{
+				"name": "High",
+				"type": "decimal",
+				"precision": 25,
+				"scale": 20
+			},
+			{
+				"name": "Low",
+				"type": "decimal",
+				"precision": 25,
+				"scale": 20
+			},
+			{
+				"name": "Volume",
+				"type": "bigint",
+				"precision": 19
+			},
+			{
+				"name": "Dividends",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 5
+			},
+			{
+				"name": "Stock Splits",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 5
+			},
+			{
+				"name": "Ticker",
+				"type": "varchar"
+			},
+			{
+				"name": "Company Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Sector",
+				"type": "varchar"
+			},
+			{
+				"name": "Industry",
+				"type": "varchar"
+			},
+			{
+				"name": "City",
+				"type": "varchar"
+			},
+			{
+				"name": "State",
+				"type": "varchar"
+			},
+			{
+				"name": "Country",
+				"type": "varchar"
+			},
+			{
+				"name": "Website",
+				"type": "varchar"
+			},
+			{
+				"name": "200_MDA",
+				"type": "decimal",
+				"precision": 25,
+				"scale": 20
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ext_yfinance_data"
+		}
+	}
+}

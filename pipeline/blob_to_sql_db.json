@@ -4,7 +4,7 @@
 		"description": "pulls from blob storage and places into SQL DB",
 		"activities": [
 			{
-				"name": "blob to source table",
+				"name": "blob to ext table",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -39,7 +39,8 @@
 					"sink": {
 						"type": "AzureSqlSink",
 						"writeBehavior": "insert",
-						"sqlWriterUseTableLock": false
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -59,7 +60,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Source_table",
+						"referenceName": "Extraction_table",
 						"type": "DatasetReference"
 					}
 				]
@@ -84,7 +85,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[sp_deduplicate_and_stage_yfinance_data_test]"
+					"storedProcedureName": "[dbo].[etl_load_src_yfinance_data]"
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureSqlDatabase1",
@@ -96,7 +97,7 @@
 				"type": "Wait",
 				"dependsOn": [
 					{
-						"activity": "blob to source table",
+						"activity": "blob to ext table",
 						"dependencyConditions": [
 							"Succeeded"
 						]
