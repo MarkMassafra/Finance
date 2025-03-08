@@ -19,10 +19,6 @@
 			"type": "string",
 			"defaultValue": "Finance Prod"
 		},
-		"trigger1_properties_blob_to_sql_db_parameters_file_name": {
-			"type": "string",
-			"defaultValue": "@triggerBody().fileName"
-		},
 		"trigger1_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/2b99ca7d-46e7-4926-9c1e-6448609239eb/resourceGroups/yfinanceproject_group/providers/Microsoft.Storage/storageAccounts/yfinanceprojectgrouabd4"
@@ -145,42 +141,10 @@
 						"typeProperties": {
 							"waitTimeInSeconds": 15
 						}
-					},
-					{
-						"name": "Stored procedure2",
-						"type": "SqlServerStoredProcedure",
-						"dependsOn": [
-							{
-								"activity": "Stored procedure1",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"storedProcedureName": "[[dbo].[sp_deduplicate_and_stage_yfinance_data]"
-						},
-						"linkedServiceName": {
-							"referenceName": "AzureSqlDatabase1",
-							"type": "LinkedServiceReference"
-						}
 					}
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
-				},
-				"parameters": {
-					"file_name": {
-						"type": "string"
-					}
 				},
 				"annotations": [],
 				"lastPublishTime": "2024-12-09T02:41:33Z"
@@ -548,9 +512,7 @@
 							"referenceName": "blob_to_sql_db",
 							"type": "PipelineReference"
 						},
-						"parameters": {
-							"file_name": "[parameters('trigger1_properties_blob_to_sql_db_parameters_file_name')]"
-						}
+						"parameters": {}
 					}
 				],
 				"type": "BlobEventsTrigger",
